@@ -1,0 +1,66 @@
+?start     : program
+
+program    : stmt*
+
+// COMANDOS E DECLARAÇÕES
+?stmt      : var_def
+           | print_cmd
+           | while_stmt
+           | block
+           | expr ";"
+
+print_cmd  : "print" expr ";"
+var_def    : "var" VAR "=" expr ";"
+block      : "{" stmt* "}"
+while_stmt : "while" "(" expr ")" stmt
+
+// EXPRESSÕES
+?expr      : assign
+
+?assign    : VAR "=" expr 
+           | test
+
+?test      : test "==" cmp  -> eq
+           | test "!=" cmp  -> ne
+           | cmp
+
+?cmp       : cmp ">" factor   -> gt
+           | cmp "<" factor   -> lt
+           | cmp ">=" factor  -> ge
+           | cmp "<=" factor  -> le
+           | factor
+
+?factor    : factor "+" term  -> add
+           | factor "-" term  -> sub
+           | term
+
+?term      : term "*" unary   -> mul
+           | term "/" unary   -> div 
+           | unary
+
+?unary     : "-" unary -> neg
+           | "!" unary -> not_
+           | call
+
+?call      : call "(" params ")"
+           | atom
+
+params     : [ expr ("," expr )* ]
+
+?atom      : NUMBER 
+           | BOOL
+           | VAR
+           | STRING
+           | NIL
+           | "(" expr ")"
+           | list
+list       : "[" [expr ("," expr)* [","]] "]"
+
+BOOL.2     : "true" | "false"
+NIL.2      : "nil"
+VAR.1      : /[a-z_]\w*/
+NUMBER     : /([1-9][0-9]*|0)(\.[0-9]+)?/ 
+STRING     : /"[^"]*"/
+COMMENT    : "//" /[^\n]*/
+
+%ignore /\s/ | COMMENT
