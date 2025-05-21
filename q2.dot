@@ -1,0 +1,12 @@
+digraph {
+    layout = "dot";
+    start [shape = diamond;];
+    accept [shape = box;];
+    start -> x [label = "b";];
+    x -> y [label = "a";];
+    x -> z [label = "b";];
+    y -> y [label = "b";];
+    y -> z [label = "b";];
+    z -> x;
+    y -> accept [label = "a";];
+}

@@ -1,6 +1,6 @@
 # Preencha Informações básicas
 nome = "Seu Nome Completo Aqui"
-matricula = "12/345678"
+matricula = "22/1034973"
 github = "@seu_usuario_github"
 turma = "16h"  # ou "18h"
 

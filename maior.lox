@@ -1,0 +1,34 @@
+var a = 10;  // não modifique essas duas linhas!
+var b = 20;
+
+// Simular if (a > b)
+var maior_a = a > b;
+while (maior_a) {
+    print "maior: a";
+    // evitar repetir
+    maior_a = false;
+}
+
+// Simular else (b > a)
+var maior_b = b > a;
+while (maior_b) {
+    print "maior: b";
+    maior_b = false;
+}
+
+// Crie um programa que imprima "maior: a" se a > b ou "maior: b", caso contrário. Você pode
+// assumir que a e b nunca são iguais.
+//
+// O que gostaríamos de fazer é:
+//
+//      if (a > b) {
+//          print "maior: a";
+//      } else {
+//          print "maior: b";
+//      }
+//
+// mas ainda não temos suporte para if! Então temos que reescrever o código
+// acima usando apenas while. A estratégia é tentar escrever cada ramo do if
+// como um loop que pode executar zero ou uma vez. É feio, mas funciona :)
+// 
+// .. escrevas sua implementação aqui!
